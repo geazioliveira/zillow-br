@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compileOnSave": false,
+  "files": [],
+  "references": [
+    {
+      "path": "./apps/zillow-br-e2e"
+    },
+    {
+      "path": "./apps/zillow-br"
+    }
+  ]
+}

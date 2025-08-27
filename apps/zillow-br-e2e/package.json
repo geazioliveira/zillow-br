@@ -1,0 +1,10 @@
+{
+  "name": "@zillow-br/zillow-br-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "implicitDependencies": [
+      "@zillow-br/zillow-br"
+    ]
+  }
+}
