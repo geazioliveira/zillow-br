@@ -8,6 +8,9 @@
     },
     {
       "path": "./apps/zillow-br"
+    },
+    {
+      "path": "./libs/shared-core"
     }
   ]
 }
