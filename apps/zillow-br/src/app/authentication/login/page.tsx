@@ -28,7 +28,7 @@ const Page = () => {
       <Box sx={{ mt: 2, textAlign: 'center' }}>
         <Typography variant="body2">
           New here?{' '}
-          <Link href="/register" underline="hover">
+          <Link href="/authentication/register" underline="hover">
             Create account
           </Link>
         </Typography>
