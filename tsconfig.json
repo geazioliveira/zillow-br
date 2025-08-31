@@ -11,6 +11,9 @@
     },
     {
       "path": "./libs/shared-core"
+    },
+    {
+      "path": "./apps/zillow-api"
     }
   ]
 }
