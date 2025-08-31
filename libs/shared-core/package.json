@@ -19,7 +19,7 @@
     "!**/*.tsbuildinfo"
   ],
   "nx": {
-    "name": "shared-core"
+    "name": "@libs/shared-core"
   },
   "dependencies": {
     "tslib": "^2.3.0"
