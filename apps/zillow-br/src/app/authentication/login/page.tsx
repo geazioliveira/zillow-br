@@ -1,7 +1,8 @@
 'use client'
+
 import React from 'react'
 import { Box, Link, Typography } from '@mui/material'
-import LoginForm from '@/forms/Login'
+import LoginForm from '@/forms/login'
 
 const Page = () => {
   return (
