@@ -5,6 +5,7 @@ import '@fontsource/roboto/500.css'
 import '@fontsource/roboto/700.css'
 import React from 'react'
 import ThemeRegistry from '@/components/structure/ThemeRegistry'
+import { AuthProvider } from '@/contexts/authentication/Context'
 
 export const metadata = {
   title: 'Welcome to ',
@@ -19,7 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ThemeRegistry>{children}</ThemeRegistry>
+        <AuthProvider>
+          <ThemeRegistry>{children}</ThemeRegistry>
+        </AuthProvider>
       </body>
     </html>
   )
