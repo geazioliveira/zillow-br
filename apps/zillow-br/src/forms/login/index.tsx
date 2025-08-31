@@ -1,10 +1,15 @@
-import { Button, TextField } from '@mui/material'
+import { Alert, Box, Button, TextField } from '@mui/material'
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { loginFormSchema, LoginFormValues } from '@/forms/Login/validation'
+import { loginFormSchema, LoginFormValues } from '@/forms/login/validation'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter } from 'next/navigation'
+import { useAuth } from '@/contexts/authentication/Context'
 
 const LoginForm = () => {
+  const { login, error, isLoading, clearError } = useAuth()
+  const router = useRouter()
+
   const {
     handleSubmit,
     register,
@@ -17,16 +22,26 @@ const LoginForm = () => {
     },
   })
 
-  const onSubmit: SubmitHandler<LoginFormValues> = (data) => {
+  const onSubmit: SubmitHandler<LoginFormValues> = async (data) => {
     try {
-      console.log('Form Submitted:', data)
+      clearError()
+      await login(data)
+      // Redirect to dashboard or home page after successful login
+      router.push('/dashboard')
     } catch (error) {
-      console.error('Error submitting form:', error)
+      // Error is handled by the auth context
+      console.error('Login failed:', error)
     }
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <Box component="form" onSubmit={handleSubmit(onSubmit)}>
+      {error && (
+        <Alert severity="error" sx={{ mb: 2 }} onClose={clearError}>
+          {error}
+        </Alert>
+      )}
+
       <TextField
         {...register('email')}
         label="Email"
@@ -36,7 +51,7 @@ const LoginForm = () => {
         error={!!errors.email}
         helperText={errors.email?.message}
         margin="normal"
-        disabled={isSubmitting}
+        disabled={isSubmitting || isLoading}
       />
 
       <TextField
@@ -47,7 +62,7 @@ const LoginForm = () => {
         error={!!errors.password}
         helperText={errors.password?.message}
         margin="normal"
-        disabled={isSubmitting}
+        disabled={isSubmitting || isLoading}
       />
 
       <Button
@@ -55,11 +70,11 @@ const LoginForm = () => {
         fullWidth
         variant="contained"
         sx={{ mt: 2 }}
-        disabled={isSubmitting}
+        disabled={isSubmitting || isLoading}
       >
-        {isSubmitting ? 'Signing In...' : 'Sign In'}
+        {isSubmitting || isLoading ? 'Signing In...' : 'Sign In'}
       </Button>
-    </form>
+    </Box>
   )
 }
 
