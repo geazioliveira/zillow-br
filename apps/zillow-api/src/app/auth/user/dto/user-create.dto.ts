@@ -1,12 +1,4 @@
-import {
-  IsEmail,
-  IsNotEmpty,
-  IsOptional,
-  IsString,
-  Matches,
-  MaxLength,
-  MinLength,
-} from 'class-validator'
+import { IsEmail, IsNotEmpty, IsOptional, IsString, Matches, MaxLength, MinLength } from 'class-validator'
 import { Transform } from 'class-transformer'
 import { ApiProperty } from '@nestjs/swagger'
 
@@ -51,7 +43,7 @@ export class UserCreateDto extends UserEntity {
 
   @IsOptional()
   @IsString()
-  @Matches(/^\+?[\d\s\-\(\)]+$/, {
+  @Matches(/^\+?[\d\s\-()]+$/, {
     message: 'Please provide a valid phone number',
   })
   @Transform(({ value }) => value?.replace(/\s/g, ''))
