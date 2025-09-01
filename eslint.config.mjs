@@ -18,11 +18,11 @@ export default [
         'error',
         {
           enforceBuildableLibDependency: true,
-          allow: ['^.*/eslint(\\.base)?\\.config\\.[cm]?[jt]s$'],
+          allow: [],
           depConstraints: [
             {
-              sourceTag: '*',
-              onlyDependOnLibsWithTags: ['*'],
+              sourceTag: 'scope:api',
+              onlyDependOnLibsWithTags: ['scope:shared', 'scope:api'],
             },
           ],
         },
@@ -34,6 +34,7 @@ export default [
           groups: [
             'builtin', // Node.js builtins
             'external', // npm libraries
+            'libs',
             'internal', // Your aliases (e.g. @app/*)
             ['parent', 'sibling', 'index'], // Relative imports
           ],
@@ -41,6 +42,10 @@ export default [
             {
               pattern: '@/mui', // <-- adjust if you use tsconfig paths
               group: 'external',
+            },
+            {
+              pattern: '@libs/**',
+              group: 'libs',
             },
           ],
           pathGroupsExcludedImportTypes: ['builtin'],

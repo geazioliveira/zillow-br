@@ -15,8 +15,5 @@
     {
       "path": "./apps/zillow-api"
     },
-    {
-      "path": "./libs/database"
-    }
   ]
 }
