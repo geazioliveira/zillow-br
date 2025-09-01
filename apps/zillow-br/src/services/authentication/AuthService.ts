@@ -1,12 +1,7 @@
-import {
-  AuthResponse,
-  LoginCredentials,
-  RegisterCredentials,
-  User,
-} from '@/services/authentication/types'
+import { AuthResponse, LoginCredentials, RegisterCredentials, User } from '@/services/authentication/types'
 
 const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api'
+  process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4200/api'
 
 export class AuthService {
   private static instance: AuthService

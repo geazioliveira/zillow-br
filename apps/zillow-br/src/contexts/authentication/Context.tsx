@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
 
     initializeAuth()
-  })
+  }, [])
 
   const login = async (credentials: LoginCredentials): Promise<void> => {
     try {
