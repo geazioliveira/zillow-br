@@ -64,11 +64,13 @@
         ],
         "options": {
           "buildTarget": "@zillow-br/zillow-api:build",
-          "runBuildTargetDependencies": false
+          "runBuildTargetDependencies": false,
+          "watch": true
         },
         "configurations": {
           "development": {
-            "buildTarget": "@zillow-br/zillow-api:build:development"
+            "buildTarget": "@zillow-br/zillow-api:build:development",
+            "watch": true
           },
           "production": {
             "buildTarget": "@zillow-br/zillow-api:build:production"
@@ -81,5 +83,9 @@
       "type:app"
     ]
   },
-  "dependencies": {}
+  "dependencies": {
+    "@nestjs/swagger": "^11.2.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.2"
+  }
 }
