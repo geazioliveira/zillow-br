@@ -14,6 +14,8 @@ import { CustomValidationPipe } from './core/pipes/validation.pipe'
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
   const globalPrefix = 'api'
+  app.setGlobalPrefix(globalPrefix)
+
   // Global Exception Filter
   app.useGlobalFilters(new GlobalExceptionFilter())
 
