@@ -41,10 +41,34 @@ export class UserService {
 
   async update(
     id: string,
-    user: Partial<UserEntity>
+    updateData: Partial<UserEntity>
   ): Promise<UserEntity | null> {
-    await this.userRepository.update(id, user)
-    return this.findOne(id)
+    const user = await this.findOne(id)
+    if (!user) {
+      throw new UserNotFoundException(id)
+    }
+
+    if (updateData.password) {
+      user.setPassword(updateData.password)
+      delete updateData.password
+    }
+
+    // Apply other updates
+    Object.assign(user, updateData)
+
+    return await this.userRepository.save(user)
+  }
+
+  async updatePassword(
+    id: string,
+    newPassword: string
+  ): Promise<UserEntity | null> {
+    const user = await this.findOne(id)
+    if (!user) {
+      throw new UserNotFoundException(id)
+    }
+    user.setPassword(newPassword)
+    return await this.userRepository.save(user)
   }
 
   async delete(id: string): Promise<void> {

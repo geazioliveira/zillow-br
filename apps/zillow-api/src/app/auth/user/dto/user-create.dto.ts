@@ -1,6 +1,7 @@
 import {
   IsEmail,
   IsNotEmpty,
+  IsOptional,
   IsString,
   Matches,
   MaxLength,
@@ -48,12 +49,12 @@ export class UserCreateDto extends UserEntity {
   @ApiProperty()
   public override password: string
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   @Matches(/^\+?[\d\s\-\(\)]+$/, {
     message: 'Please provide a valid phone number',
   })
   @Transform(({ value }) => value?.replace(/\s/g, ''))
   @ApiProperty()
-  override phone: string
+  override phone?: string
 }
