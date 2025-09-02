@@ -18,6 +18,7 @@
     "sharedGlobals": []
   },
   "nxCloudId": "68aef52c6fc7666a759b90eb",
+  "useDaemonProcess": true,
   "plugins": [
     {
       "plugin": "@nx/js/typescript",

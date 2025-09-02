@@ -4,9 +4,6 @@
   "files": [],
   "references": [
     {
-      "path": "./apps/zillow-br-e2e"
-    },
-    {
       "path": "./apps/zillow-br"
     },
     {
@@ -14,6 +11,6 @@
     },
     {
       "path": "./apps/zillow-api"
-    },
+    }
   ]
 }
