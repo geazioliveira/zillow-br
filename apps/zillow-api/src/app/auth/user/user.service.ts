@@ -79,4 +79,8 @@ export class UserService {
 
     await this.userRepository.delete(id)
   }
+
+  findByEmail(email: string): Promise<UserEntity | null> {
+    return this.userRepository.findOneBy({ email })
+  }
 }

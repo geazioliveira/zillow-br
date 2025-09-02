@@ -20,7 +20,7 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post()
-  create(@Body() user: UserCreateDto): Promise<UserResponseDto> {
+  create(@Body() user: UserCreateDto): Promise<UserEntity> {
     return this.userService.create(user)
   }
 
@@ -30,7 +30,7 @@ export class UserController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<UserResponseDto | null> {
+  findOne(@Param('id') id: string): Promise<UserEntity | null> {
     return this.userService.findOne(id)
   }
 
@@ -38,7 +38,7 @@ export class UserController {
   update(
     @Param('id') id: string,
     @Body() user: Partial<UserEntity>
-  ): Promise<UserResponseDto | null> {
+  ): Promise<UserEntity | null> {
     return this.userService.update(id, user)
   }
 

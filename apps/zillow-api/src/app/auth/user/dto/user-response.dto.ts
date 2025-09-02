@@ -1,4 +1,4 @@
-import { Expose } from 'class-transformer'
+import { Expose, Transform } from 'class-transformer'
 import { UserEntity } from '../user.entity'
 
 export class UserResponseDto extends UserEntity {
@@ -10,6 +10,10 @@ export class UserResponseDto extends UserEntity {
 
   @Expose()
   public override lastName: string
+
+  @Expose()
+  @Transform(({ obj }) => `${obj.firstName} ${obj.lastName}`)
+  fullName: string
 
   @Expose()
   public override email: string
