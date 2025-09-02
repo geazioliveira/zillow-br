@@ -1,4 +1,9 @@
-import { AuthResponse, LoginCredentials, RegisterCredentials, User } from '@/services/authentication/types'
+import {
+  AuthResponse,
+  LoginCredentials,
+  RegisterCredentials,
+  User,
+} from '@/services/authentication/types'
 
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4200/api'
@@ -123,22 +128,8 @@ export class AuthService {
 
   // ... existing methods remain the same ...
   async logout(): Promise<void> {
-    try {
-      // Call logout endpoint if available
-      if (this.accessToken) {
-        await fetch(`${API_BASE_URL}/auth/logout`, {
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${this.accessToken}`,
-          },
-        })
-      }
-    } catch (error) {
-      console.error('Logout API call failed:', error)
-    } finally {
-      // Clear tokens regardless of API call success
-      this.clearTokens()
-    }
+    // Clear tokens regardless of API call success
+    this.clearTokens()
   }
 
   async getCurrentUser(): Promise<User | null> {
